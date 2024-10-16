@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Details</title>
+    <style>
+          body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            color: #333;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .user-info {
+            font-size: 16px;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .filters {
+            margin-top: 10px;
+        }
+
+        .filter-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .filter-list li {
+            margin-right: 10px;
+        }
+
+        .filter-list li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            background-color: #ff5252;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .filter-list li a:hover {
+            background-color: #ff1744;
+        }
+
+        .filter-list li.active a {
+            background-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        button[type="submit"] {
+            background-color: #ff5252;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ff5252;
+        }
+
+        a.delete-link {
+            color: #ff5252;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="user-info">
+                <span style="font-size: 24px;">User ID:</span> <span style="font-size: 24px; font-weight: bold;">{{ user.username }}</span>
+            </div>        
+        <div class="filters">
+            <ul class="filter-list">
+                <li><a href="{% url 'home_page' %}" class="active">Home Page</a></li>
+                <li><a href="{% url 'logout' %}">Profile</a></li>
+            </ul>
+        </div>
+		</div>
+        
+    </div>
+    <h1>Manage Details</h1>
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="file-upload" class="custom-file-upload">
+            Select File
+        </label>
+        <input id="file-upload" type="file" name="file" required onchange="displayFileName(this)">
+        <button type="submit">Upload</button>
+    </form>
+    
+    {% if uploaded_files %}
+        <h2>Uploaded Files:</h2>
+        <ul>
+            {% for uploaded_file in uploaded_files %}
+                <li>
+                    <a href="{{ uploaded_file.file.url }}">{{ uploaded_file.file.name }}</a>
+                    <a href="{% url 'delete_file' uploaded_file.id %}" class="delete-link">Delete</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No files uploaded yet.</p>
+    {% endif %}
+    <script>
+        function displayFileName(input) {
+            const fileName = input.files[0].name;
+            const label = document.querySelector('.custom-file-upload');
+            label.textContent = fileName;
+        }
+    </script>
+</body>
+</html>

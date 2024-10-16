@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Upload Profile Photo</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style type="text/css">
+            body{
+                margin: 0;
+                padding: 0;
+                background: #c1aefc;
+            }
+            .wrapper{
+                height: 300px;
+                width: 300px;
+                position: relative;
+                border: 5px solid black;
+                border-radius: 50%;
+                background: url();
+                background-size: 100% 100%;
+                margin: 100px auto;
+                overflow: hidden;
+            }
+            .my_file{
+                position: absolute;
+                bottom: 0;
+                outline: none;
+                color: transparent;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 15px 120px;
+                cursor: pointer;
+                transition: 0.5s;
+                background: rgba(0,0,0,0.5);
+                opacity: 0;
+            }
+            .my_file::-webkit-file-upload-button{
+                visibility: hidden;
+            }
+            .my_file::before{
+                content: '\f030';
+                font-family: fontAwesome;
+                font-size: 50px;
+                color: #fff;
+                display: inline-block;
+                -webkit-user-select: none;
+            }
+            .my_file::after{
+                font-family: 'arial';
+                font-weight: bold;
+                color: #fff;
+                display: block;
+                top: 70px;
+                position: absolute;
+            }
+            .my_file:hover{
+                opacity: 1;
+            }
+            .skip_button {
+                display: block;
+                width: 100px;
+                margin: 20px auto;
+                text-align: center;
+                padding: 10px;
+                border-radius: 50px;
+                background-color: black;
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+           <input type="file" class="my_file" id="profile_photo">
+        </div>
+       <div style="text-align:center;">
+  <p style="margin-top: 20px; margin-bottom: 10px; font-family: 50px;"><b>Upload Profile Photo</p>
+  </br><a href="{% url 'home_page' %}" class="skip_button">Done</a>
+   <p></br>or</b></p></div>
+</div>
+        <a href="{% url 'home_page' %}" class="skip_button">Skip</a>
+
+        <script type="text/javascript">
+            const profile_photo = document.getElementById('profile_photo');
+            profile_photo.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.addEventListener('load', function() {
+                        const image_url = this.result;
+                        const wrapper = document.querySelector('.wrapper');
+                        wrapper.style.backgroundImage = `url(${image_url})`;
+                    });
+                    reader.readAsDataURL(file);
+                }
+            });
+        </script>
+    </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Upload Profile Photo</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style type="text/css">
+            body{
+                margin: 0;
+                padding: 0;
+                background: #c1aefc;
+            }
+            .wrapper{
+                height: 300px;
+                width: 300px;
+                position: relative;
+                border: 5px solid black;
+                border-radius: 50%;
+                background: url();
+                background-size: 100% 100%;
+                margin: 100px auto;
+                overflow: hidden;
+            }
+            .my_file{
+                position: absolute;
+                bottom: 0;
+                outline: none;
+                color: transparent;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 15px 120px;
+                cursor: pointer;
+                transition: 0.5s;
+                background: rgba(0,0,0,0.5);
+                opacity: 0;
+            }
+            .my_file::-webkit-file-upload-button{
+                visibility: hidden;
+            }
+            .my_file::before{
+                content: '\f030';
+                font-family: fontAwesome;
+                font-size: 50px;
+                color: #fff;
+                display: inline-block;
+                -webkit-user-select: none;
+            }
+            .my_file::after{
+                font-family: 'arial';
+                font-weight: bold;
+                color: #fff;
+                display: block;
+                top: 70px;
+                position: absolute;
+            }
+            .my_file:hover{
+                opacity: 1;
+            }
+            .skip_button {
+                display: block;
+                width: 100px;
+                margin: 20px auto;
+                text-align: center;
+                padding: 10px;
+                border-radius: 50px;
+                background-color: black;
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+           <input type="file" class="my_file" id="profile_photo">
+        </div>
+       <div style="text-align:center;">
+  <p style="margin-top: 20px; margin-bottom: 10px; font-family: 50px;"><b>Upload Profile Photo</p>
+  </br><a href="{% url 'home_page' %}" class="skip_button">Done</a>
+   <p></br>or</b></p></div>
+</div>
+        <a href="{% url 'home_page' %}" class="skip_button">Skip</a>
+
+        <script type="text/javascript">
+            const profile_photo = document.getElementById('profile_photo');
+            profile_photo.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.addEventListener('load', function() {
+                        const image_url = this.result;
+                        const wrapper = document.querySelector('.wrapper');
+                        wrapper.style.backgroundImage = `url(${image_url})`;
+                    });
+                    reader.readAsDataURL(file);
+                }
+            });
+        </script>
+    </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Upload Profile Photo</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style type="text/css">
+            body{
+                margin: 0;
+                padding: 0;
+                background: #c1aefc;
+            }
+            .wrapper{
+                height: 300px;
+                width: 300px;
+                position: relative;
+                border: 5px solid black;
+                border-radius: 50%;
+                background: url();
+                background-size: 100% 100%;
+                margin: 100px auto;
+                overflow: hidden;
+            }
+            .my_file{
+                position: absolute;
+                bottom: 0;
+                outline: none;
+                color: transparent;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 15px 120px;
+                cursor: pointer;
+                transition: 0.5s;
+                background: rgba(0,0,0,0.5);
+                opacity: 0;
+            }
+            .my_file::-webkit-file-upload-button{
+                visibility: hidden;
+            }
+            .my_file::before{
+                content: '\f030';
+                font-family: fontAwesome;
+                font-size: 50px;
+                color: #fff;
+                display: inline-block;
+                -webkit-user-select: none;
+            }
+            .my_file::after{
+                font-family: 'arial';
+                font-weight: bold;
+                color: #fff;
+                display: block;
+                top: 70px;
+                position: absolute;
+            }
+            .my_file:hover{
+                opacity: 1;
+            }
+            .skip_button {
+                display: block;
+                width: 100px;
+                margin: 20px auto;
+                text-align: center;
+                padding: 10px;
+                border-radius: 50px;
+                background-color: black;
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+           <input type="file" class="my_file" id="profile_photo">
+        </div>
+       <div style="text-align:center;">
+  <p style="margin-top: 20px; margin-bottom: 10px; font-family: 50px;"><b>Upload Profile Photo</p>
+  </br><a href="{% url 'home_page' %}" class="skip_button">Done</a>
+   <p></br>or</b></p></div>
+</div>
+        <a href="{% url 'home_page' %}" class="skip_button">Skip</a>
+
+        <script type="text/javascript">
+            const profile_photo = document.getElementById('profile_photo');
+            profile_photo.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.addEventListener('load', function() {
+                        const image_url = this.result;
+                        const wrapper = document.querySelector('.wrapper');
+                        wrapper.style.backgroundImage = `url(${image_url})`;
+                    });
+                    reader.readAsDataURL(file);
+                }
+            });
+        </script>
+    </body>
+</html>

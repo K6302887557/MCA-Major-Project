@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Signup page</title>
+    <style>
+      body {
+        background-color: white;
+        font-family: Cursive;
+   }
+      
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      
+      h1 {
+        font-size: 40px;
+        
+        margin-bottom: 30px;
+        text-align: center;
+        color: Black;
+        letter-spacing: 4px;
+      }
+      
+      form {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+        width: 500px;
+      }
+      
+      input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 100%;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+      
+      input[type="submit"] {
+        background-color: skyBlue;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 15px 30px;
+        font-size: 18px;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+      
+      input[type="submit"]:hover {
+        background-color: black;
+      }
+      .explanation {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form method="post">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="email" pattern="[a-z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required />
+        <input type="text" name="name" placeholder="Enter name" required />
+        <input type="text" name="username" placeholder="User ID" pattern="[A-Za-z0-9]+" required />
+        <div class="explanation">
+          User ID must contain at least one alphabet and one number.<br>
+          No special characters are allowed.
+      </div>
+        <input type="text" name="generate_key" placeholder="Generate Key" required />
+        <input type="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required />
+        <div class="explanation">
+          Password must be at least 8 characters long.<br>
+          Password should contain at least one capital letter, one special character, and one numeric value.
+      </div>
+        <div style="display: flex; justify-content: center;">
+          <input type="submit" name="signup_btn" value="Sign up">
+          </div>
+        </form>
+        <p>Already have an account?<a href="{% url 'login' %}">Login</a></p>
+      </div>
+    </body>
+  </html>
